@@ -371,6 +371,35 @@ updateHUD();
 
 // ---- Movement ----
 const keys = {};
+// Touch joystick state (mobile)
+const touchMove = { x: 0, z: 0, active: false };
+(function initTouch() {
+  const joy = document.getElementById("joystick");
+  const stick = document.getElementById("stick");
+  if (!joy || !stick) return;
+  let pid = null;
+  function setStick(dx, dy) {
+    stick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+  }
+  function handle(e) {
+    const r = joy.getBoundingClientRect();
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    let dx = e.clientX - cx, dy = e.clientY - cy;
+    const max = r.width / 2 - 10;
+    const d = Math.hypot(dx, dy);
+    if (d > max) { dx = dx / d * max; dy = dy / d * max; }
+    setStick(dx, dy);
+    // deadzone
+    if (Math.hypot(dx, dy) < 8) { touchMove.x = 0; touchMove.z = 0; touchMove.active = false; return; }
+    touchMove.x = dx / max; touchMove.z = dy / max; touchMove.active = true;
+  }
+  joy.addEventListener("pointerdown", (e) => { pid = e.pointerId; joy.setPointerCapture(pid); handle(e); });
+  joy.addEventListener("pointermove", (e) => { if (e.pointerId === pid) handle(e); });
+  const end = (e) => { if (e.pointerId === pid) { pid = null; setStick(0, 0); touchMove.x = 0; touchMove.z = 0; touchMove.active = false; } };
+  joy.addEventListener("pointerup", end);
+  joy.addEventListener("pointercancel", end);
+  document.getElementById("restart-touch")?.addEventListener("click", () => resetGame());
+})();
 window.addEventListener("keydown", (e) => {
   keys[e.key.toLowerCase()] = true;
   if (e.key.toLowerCase() === "r") resetGame();
@@ -391,6 +420,7 @@ function animate() {
     if (keys["s"] || keys["arrowdown"]) z += speed;
     if (keys["a"] || keys["arrowleft"]) x -= speed;
     if (keys["d"] || keys["arrowright"]) x += speed;
+    if (touchMove.active) { x += touchMove.x * speed; z += touchMove.z * speed; }
     const nx = THREE.MathUtils.clamp(player.position.x + x, -10, 10);
     const nz = THREE.MathUtils.clamp(player.position.z + z, -10, 10);
     if (!hitsWall(nx, player.position.z)) player.position.x = nx;

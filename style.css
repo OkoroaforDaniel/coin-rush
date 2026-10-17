@@ -25,5 +25,20 @@ main { display: flex; gap: 16px; padding: 16px; max-width: 1200px; margin: 0 aut
 #board li { margin: 4px 0; }
 #game-container { flex: 1; height: 600px; background: #000; border-radius: 12px; position: relative; overflow: hidden; border: 2px solid #2962ff; }
 #game-container canvas { width: 100% !important; height: 100% !important; display: block; }
-#win-banner { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); background: gold; color: #000; padding: 10px 18px; border-radius: 20px; font-weight: 800; z-index: 5; }
-#lose-banner { position: absolute; top: 60px; left: 50%; transform: translateX(-50%); background: #ff1744; color: #fff; padding: 10px 18px; border-radius: 20px; font-weight: 800; z-index: 5; }
+#win-banner { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); background: gold; color: #000; padding: 10px 18px; border-radius: 20px; font-weight: 800; z-index: 5; max-width: 90%; text-align: center; }
+#lose-banner { position: absolute; top: 60px; left: 50%; transform: translateX(-50%); background: #ff1744; color: #fff; padding: 10px 18px; border-radius: 20px; font-weight: 800; z-index: 5; max-width: 90%; text-align: center; }
+#touch-ui { display: none; }
+#joystick { position: absolute; left: 16px; bottom: 16px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.35); z-index: 6; touch-action: none; }
+#stick { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; border-radius: 50%; background: rgba(41,98,255,0.9); transform: translate(-50%,-50%); }
+#restart-touch { position: absolute; right: 16px; bottom: 32px; width: 64px; height: 64px; border-radius: 50%; font-size: 22px; font-weight: 800; z-index: 6; touch-action: manipulation; }
+/* Mobile layout */
+@media (max-width: 860px) {
+  #platform-header { flex-direction: column; gap: 8px; align-items: flex-start; padding: 10px 12px; }
+  #login-input { min-width: 0; width: 100%; }
+  #user-area { width: 100%; }
+  .startng-card { margin: 8px 12px; }
+  main { flex-direction: column-reverse; padding: 10px; gap: 10px; }
+  #left-panel { width: 100%; }
+  #game-container { height: 62vh; min-height: 420px; }
+  #touch-ui { display: block; }
+}
