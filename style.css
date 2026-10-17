@@ -1,44 +1,47 @@
-* { margin: 0; box-sizing: border-box; font-family: Inter, Arial, sans-serif; }
-body { background: #0b1020; color: #fff; min-height: 100vh; }
+/* Coin Rush premium theme part 1 */
+:root { --bg: #070b18; --bg2: #0d1430; --panel: rgba(18,26,56,.88); --line: rgba(120,150,255,.16); --text: #eef2ff; --muted: #9aa7c7; --brand: #3b82f6; --gold: #fbbf24; --shadow: 0 18px 50px rgba(0,0,0,.45); }
+* { margin: 0; box-sizing: border-box; font-family: Inter, system-ui, Arial, sans-serif; }
+body { background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); min-height: 100vh; }
 .hidden { display: none !important; }
-#platform-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: #101736; border-bottom: 2px solid #2962ff; }
-.logo { font-weight: 800; font-size: 22px; }
+#platform-header { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 22px; background: rgba(10,15,35,.78); border-bottom: 1px solid var(--line); }
+.logo { font-weight: 900; font-size: 24px; display: flex; align-items: center; gap: 10px; }
 #user-area { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-#login-input { padding: 8px 10px; border-radius: 8px; border: 1px solid #334; min-width: 220px; }
-button { padding: 8px 14px; border-radius: 8px; border: none; background: #2962ff; color: #fff; cursor: pointer; font-weight: 600; }
-button.secondary { background: #00c853; }
-#logout-btn { background: #444; }
-#header-avatar-dot { width: 18px; height: 18px; border-radius: 50%; background: #2962ff; display: inline-block; border: 2px solid #fff; }
-.startng-card { margin: 12px auto; max-width: 1200px; display: flex; align-items: center; gap: 12px; padding: 8px 16px 8px 8px; border-radius: 999px; background: #292a23; color: #fffefa; }
-.startng-card img { width: 48px; height: 48px; border-radius: 50%; background: #d8fd71; }
-.startng-card b { display: block; font-size: 16px; }
+#login-input { padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.07); color: var(--text); min-width: 220px; }
+button { padding: 10px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: #2f6bf0; color: #fff; cursor: pointer; font-weight: 700; }
+button.secondary { background: #16a34a; }
+#logout-btn { background: rgba(255,255,255,.1); }
+#header-avatar-dot { width: 20px; height: 20px; border-radius: 50%; background: #2962ff; display: inline-block; border: 2px solid #fff; }
+.startng-card { margin: 14px auto; max-width: 1240px; display: flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; border-radius: 999px; background: rgba(18,26,56,.9); border: 1px solid var(--line); }
+.startng-card img { width: 48px; height: 48px; border-radius: 50%; background: #1e293b; }
+.startng-card b { display: block; }
 .startng-card span { font-size: 12px; opacity: .7; }
-.startng-card button { margin-left: 8px; border: 0; border-radius: 999px; padding: 6px 12px; background: #d8fd71; color: #111; font-weight: 700; cursor: pointer; }
-main { display: flex; gap: 16px; padding: 16px; max-width: 1200px; margin: 0 auto; }
-#left-panel { width: 340px; background: #131b3a; padding: 16px; border-radius: 12px; }
-#hud, #styling-panel, #board-panel { background: #0b1020; padding: 12px; border-radius: 8px; margin: 12px 0; }
-#styling-panel { border: 1px dashed #2962ff; }
-.small { font-size: 12px; opacity: 0.8; margin: 6px 0; }
-.swatches { display: flex; gap: 8px; margin-top: 8px; }
-.swatch { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #fff; }
-#board { margin-left: 18px; font-size: 14px; }
-#board li { margin: 4px 0; }
-#game-container { flex: 1; height: 600px; background: #000; border-radius: 12px; position: relative; overflow: hidden; border: 2px solid #2962ff; }
+.startng-card button { margin-left: auto; border-radius: 999px; background: var(--gold); color: #111; font-weight: 800; }
+main { display: grid; grid-template-columns: 360px 1fr; gap: 18px; padding: 18px; max-width: 1240px; margin: 0 auto; align-items: start; }
+#left-panel { background: var(--panel); border: 1px solid var(--line); padding: 18px; border-radius: 18px; box-shadow: var(--shadow); }
+#left-panel h2 { font-size: 26px; font-weight: 900; }
+#left-panel > p { color: var(--muted); font-size: 14px; margin: 8px 0; line-height: 1.5; }
+#hud, #styling-panel, #board-panel { background: rgba(7,11,24,.9); padding: 14px; border-radius: 14px; margin: 14px 0; border: 1px solid rgba(255,255,255,.08); }
+#hud { display: grid; gap: 8px; }
+#hud div { display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); }
+#hud b { color: var(--text); background: rgba(255,255,255,.07); padding: 4px 10px; border-radius: 999px; }
+.small { font-size: 12px; opacity: .8; margin: 6px 0; }
+.swatches { display: flex; gap: 10px; margin-top: 10px; }
+.swatch { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff; }
+#board { margin-left: 20px; font-size: 14px; display: grid; gap: 6px; }
+#board li { background: rgba(255,255,255,.06); padding: 8px 12px; border-radius: 10px; list-style-position: inside; }
+#game-container { position: relative; overflow: hidden; height: 640px; border-radius: 22px; background: #020617; border: 1px solid rgba(120,150,255,.25); box-shadow: var(--shadow); }
 #game-container canvas { width: 100% !important; height: 100% !important; display: block; }
-#win-banner { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); background: gold; color: #000; padding: 10px 18px; border-radius: 20px; font-weight: 800; z-index: 5; max-width: 90%; text-align: center; }
-#lose-banner { position: absolute; top: 60px; left: 50%; transform: translateX(-50%); background: #ff1744; color: #fff; padding: 10px 18px; border-radius: 20px; font-weight: 800; z-index: 5; max-width: 90%; text-align: center; }
+#win-banner { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #111; padding: 12px 22px; border-radius: 999px; font-weight: 900; z-index: 5; max-width: 92%; text-align: center; }
+#lose-banner { position: absolute; top: 68px; left: 50%; transform: translateX(-50%); background: #dc2626; color: #fff; padding: 12px 22px; border-radius: 999px; font-weight: 900; z-index: 5; max-width: 92%; text-align: center; }
 #touch-ui { display: none; }
-#joystick { position: absolute; left: 16px; bottom: 16px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.35); z-index: 6; touch-action: none; }
-#stick { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; border-radius: 50%; background: rgba(41,98,255,0.9); transform: translate(-50%,-50%); }
-#restart-touch { position: absolute; right: 16px; bottom: 32px; width: 64px; height: 64px; border-radius: 50%; font-size: 22px; font-weight: 800; z-index: 6; touch-action: manipulation; }
-/* Mobile layout */
-@media (max-width: 860px) {
-  #platform-header { flex-direction: column; gap: 8px; align-items: flex-start; padding: 10px 12px; }
-  #login-input { min-width: 0; width: 100%; }
+#joystick { position: absolute; left: 18px; bottom: 18px; width: 132px; height: 132px; border-radius: 50%; background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.22); z-index: 6; touch-action: none; }
+#stick { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; border-radius: 50%; background: #2563eb; transform: translate(-50%,-50%); border: 1px solid rgba(255,255,255,.3); }
+#restart-touch { position: absolute; right: 18px; bottom: 36px; width: 68px; height: 68px; border-radius: 50%; font-size: 22px; font-weight: 900; z-index: 6; background: #d97706; }
+@media (max-width: 900px) {
+  #platform-header { flex-direction: column; align-items: stretch; }
+  #login-input { width: 100%; min-width: 0; }
   #user-area { width: 100%; }
-  .startng-card { margin: 8px 12px; }
-  main { flex-direction: column-reverse; padding: 10px; gap: 10px; }
-  #left-panel { width: 100%; }
-  #game-container { height: 62vh; min-height: 420px; }
+  main { grid-template-columns: 1fr; padding: 12px; }
+  #game-container { height: 62vh; min-height: 440px; order: -1; }
   #touch-ui { display: block; }
 }
