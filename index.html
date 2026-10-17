@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coin Rush - Collect The Coins</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header id="platform-header">
+    <div class="logo">Coin Rush</div>
+    <div id="user-area">
+      <div id="logged-in-view" class="hidden">
+        Hello, <b id="header-username">Guest</b>
+        <div id="header-avatar-dot"></div>
+        <button id="logout-btn">Logout</button>
+      </div>
+      <div id="login-view">
+        <input id="login-input" placeholder="Test login name (live uses start.ng)" />
+        <button id="login-btn">Login (test)</button>
+        <button id="signin-live-btn" class="secondary">Sign in with start.ng</button>
+      </div>
+    </div>
+  </header>
+  <div class="startng-card" id="player-card" hidden>
+    <img id="player-face" alt="player face" />
+    <div><b id="player-name">Guest</b><span id="player-account"></span></div>
+    <button id="player-sign-in" hidden>Sign in</button>
+  </div>
+  <main>
+    <div id="left-panel">
+      <h2>Collect The Coins</h2>
+      <p>Move with <b>WASD</b> or <b>Arrow Keys</b>. Collect 5 coins, avoid enemies + walls!</p>
+      <div id="hud">
+        <div>Player: <b id="hud-username">Guest</b></div>
+        <div>Score: <b id="hud-score">0</b> / <span id="hud-total">5</span></div>
+        <div>Lives: <b id="hud-lives">...</b></div>
+        <div>Character color: <b id="hud-color">blue</b></div>
+      </div>
+      <div id="styling-panel">
+        <h3>Local test styling</h3>
+        <p class="small">Live your look comes from start.ng character. Locally test with this.</p>
+        <label>Avatar color:
+          <input type="color" id="color-picker" value="#2962ff" />
+        </label>
+        <div class="swatches">
+          <button class="swatch" data-color="#2962ff" style="background:#2962ff"></button>
+          <button class="swatch" data-color="#ff3d00" style="background:#ff3d00"></button>
+          <button class="swatch" data-color="#00c853" style="background:#00c853"></button>
+          <button class="swatch" data-color="#ffeb3b" style="background:#ffeb3b"></button>
+          <button class="swatch" data-color="#9c27b0" style="background:#9c27b0"></button>
+        </div>
+      </div>
+      <div id="board-panel">
+        <h3>Leaderboard</h3>
+        <p class="small" id="save-msg"></p>
+        <ol id="board"><li>No scores yet - be the first!</li></ol>
+      </div>
+    </div>
+    <div id="game-container">
+      <div id="win-banner" class="hidden">You collected all coins, <span id="win-user">Player</span>! Press R to restart</div>
+      <div id="lose-banner" class="hidden">Game Over! Press R to try again</div>
+    </div>
+  </main>
+  <script type="module" src="./startng.js"></script>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
